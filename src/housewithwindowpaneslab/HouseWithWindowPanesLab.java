@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Circle;
 import javafx.scene.shape.Line;
 import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
@@ -63,6 +64,9 @@ public class HouseWithWindowPanesLab extends Application {
         final double LINE4_Y1 = WINDOW_Y;
         final double LINE4_Y2 = WINDOW_Y + WINDOW_HEIGHT;
         
+        final double SUN_X = SCENE_WIDTH - 70, SUN_Y = 70;
+        final double SUN_RADIUS = 40;
+        
         Rectangle grass = new Rectangle(GRASS_X, GRASS_Y, SCENE_WIDTH, GRASS_HEIGHT);
         grass.setFill(Color.GREEN);
         
@@ -95,9 +99,12 @@ public class HouseWithWindowPanesLab extends Application {
         Line line3 = new Line(LINE3_X1, LINE3_Y, LINE3_X2, LINE3_Y);
         Line line4 = new Line(LINE4_X, LINE4_Y1, LINE4_X, LINE4_Y2);
         
+        Circle sun = new Circle(SUN_X, SUN_Y, SUN_RADIUS);
+        sun.setFill(Color.YELLOW);
+        
         Pane root = new Pane();
         root.getChildren().addAll(
-                grass, walls, doorstep, roof, door, window1, window2, line1, line2, line3, line4
+                grass, walls, doorstep, roof, door, window1, window2, line1, line2, line3, line4, sun
         );
         
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
