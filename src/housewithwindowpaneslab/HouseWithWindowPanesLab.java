@@ -29,12 +29,19 @@ public class HouseWithWindowPanesLab extends Application {
         
         final double GRASS_HEIGHT = 50;
         
+        final double WALLS_X = 125;
+        final double WALLS_WIDTH = 250, WALLS_HEIGHT = 250;
+        
         Rectangle grass = new Rectangle(0, SCENE_HEIGHT - GRASS_HEIGHT, SCENE_WIDTH, GRASS_HEIGHT);
         grass.setFill(Color.GREEN);
         
+        Rectangle walls = new Rectangle(WALLS_X, SCENE_HEIGHT - GRASS_HEIGHT - WALLS_HEIGHT, WALLS_WIDTH, WALLS_HEIGHT);
+        walls.setFill(Color.LIGHTGRAY);
+        walls.setStroke(Color.BLACK);
+        
         Pane root = new Pane();
         root.getChildren().addAll(
-                grass
+                grass, walls
         );
         
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
