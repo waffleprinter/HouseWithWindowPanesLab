@@ -67,6 +67,9 @@ public class HouseWithWindowPanesLab extends Application {
         final double SUN_X = SCENE_WIDTH - 70, SUN_Y = 70;
         final double SUN_RADIUS = 40;
         
+        final double CHIMNEY_WIDTH = 30, CHIMNEY_HEIGHT = 80;
+        final double CHIMNEY_X = WALLS_X + 50, CHIMNEY_Y = WALLS_Y - CHIMNEY_HEIGHT - 20;
+        
         Rectangle grass = new Rectangle(GRASS_X, GRASS_Y, SCENE_WIDTH, GRASS_HEIGHT);
         grass.setFill(Color.GREEN);
         
@@ -102,9 +105,12 @@ public class HouseWithWindowPanesLab extends Application {
         Circle sun = new Circle(SUN_X, SUN_Y, SUN_RADIUS);
         sun.setFill(Color.YELLOW);
         
+        Rectangle chimney = new Rectangle(CHIMNEY_X, CHIMNEY_Y, CHIMNEY_WIDTH, CHIMNEY_HEIGHT);
+        chimney.setFill(Color.GRAY);
+        
         Pane root = new Pane();
         root.getChildren().addAll(
-                grass, walls, doorstep, roof, door, window1, window2, line1, line2, line3, line4, sun
+                grass, walls, doorstep, roof, door, window1, window2, line1, line2, line3, line4, sun, chimney
         );
         
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
