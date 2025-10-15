@@ -38,7 +38,7 @@ public class HouseWithWindowPanesLab extends Application {
         final double GRASS_X = 0, GRASS_Y = SCENE_HEIGHT - GRASS_HEIGHT;
         
         final double WALLS_WIDTH = 250, WALLS_HEIGHT = 200;
-        final double WALLS_X = 125, WALLS_Y = GRASS_Y - WALLS_HEIGHT;
+        final double WALLS_X = (SCENE_WIDTH - WALLS_WIDTH) / 2, WALLS_Y = GRASS_Y - WALLS_HEIGHT;
         
         final double DOORSTEP_HEIGHT = 10;
         
@@ -65,11 +65,18 @@ public class HouseWithWindowPanesLab extends Application {
         
         final double LINE4_X = WINDOW2_X + WINDOW_WIDTH / 2;
         
-        final double SUN_X = SCENE_WIDTH - 70, SUN_Y = 70;
+        final double SUN_OFFSET = 70;
+        final double SUN_X = SCENE_WIDTH - SUN_OFFSET, SUN_Y = SUN_OFFSET;
         final double SUN_RADIUS = 40;
         
         final double CHIMNEY_WIDTH = 30, CHIMNEY_HEIGHT = 80;
         final double CHIMNEY_X = WALLS_X + 50, CHIMNEY_Y = WALLS_Y - CHIMNEY_HEIGHT - 20;
+        
+        final double RAY_LENGTH = 40, RAY_OFFSET = 10;
+        final double RAY1_X1 = SUN_X - SUN_RADIUS - RAY_OFFSET;
+        final double RAY1_X2 = RAY1_X1 - RAY_LENGTH;
+        final double RAY2_Y1 = SUN_Y + SUN_RADIUS + RAY_OFFSET;
+        final double RAY2_Y2 = SUN_Y + SUN_RADIUS + RAY_OFFSET + RAY_LENGTH;
         
         Rectangle grass = new Rectangle(GRASS_X, GRASS_Y, SCENE_WIDTH, GRASS_HEIGHT);
         grass.setFill(Color.GREEN);
@@ -109,9 +116,22 @@ public class HouseWithWindowPanesLab extends Application {
         Rectangle chimney = new Rectangle(CHIMNEY_X, CHIMNEY_Y, CHIMNEY_WIDTH, CHIMNEY_HEIGHT);
         chimney.setFill(Color.GRAY);
         
+        Line ray1 = new Line(RAY1_X1, SUN_Y, RAY1_X2, SUN_Y);
+        ray1.setStroke(Color.YELLOW);
+        ray1.setStrokeWidth(5);
+        
+        Line ray2 = new Line(SUN_X, RAY2_Y1, SUN_X, RAY2_Y2);       
+        ray2.setStroke(Color.YELLOW);
+        ray2.setStrokeWidth(5);
+        
+        Line ray3 = new Line(RAY1_X2 + 20, RAY2_Y2 - 20, RAY1_X1 + 10, RAY2_Y1 - 10);       
+        ray3.setStroke(Color.YELLOW);
+        ray3.setStrokeWidth(5);
+        
         Pane root = new Pane();
         root.getChildren().addAll(
-                grass, walls, doorstep, roof, door, window1, window2, line1, line2, line3, line4, sun, chimney
+                grass, walls, doorstep, roof, door, window1, window2, 
+                line1, line2, line3, line4, sun, chimney, ray1, ray2, ray3
         );
         
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
