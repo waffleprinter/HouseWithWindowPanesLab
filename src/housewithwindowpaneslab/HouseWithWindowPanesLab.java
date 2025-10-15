@@ -27,6 +27,10 @@ public class HouseWithWindowPanesLab extends Application {
     
     @Override
     public void start(Stage stage) {
+        // Constants position and size for every shape displayed; any values
+        // seemingly 'missing' are values that would be identitcal to another
+        // ex. DOORSTEP_WIDTH is equal to WALLS_WIDTH, so the latter is directly 
+        // used instead of creating the former variable
         final double SCENE_WIDTH = 500;
         final double SCENE_HEIGHT = 500;
         
@@ -58,11 +62,8 @@ public class HouseWithWindowPanesLab extends Application {
         
         final double LINE3_X1 = WINDOW2_X;
         final double LINE3_X2 = WINDOW2_X + WINDOW_WIDTH;
-        final double LINE3_Y = WINDOW_Y + WINDOW_HEIGHT / 2;
         
         final double LINE4_X = WINDOW2_X + WINDOW_WIDTH / 2;
-        final double LINE4_Y1 = WINDOW_Y;
-        final double LINE4_Y2 = WINDOW_Y + WINDOW_HEIGHT;
         
         final double SUN_X = SCENE_WIDTH - 70, SUN_Y = 70;
         final double SUN_RADIUS = 40;
@@ -99,8 +100,8 @@ public class HouseWithWindowPanesLab extends Application {
         Rectangle window2 = new Rectangle(WINDOW2_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT);
         window2.setFill(Color.LIGHTBLUE);
         
-        Line line3 = new Line(LINE3_X1, LINE3_Y, LINE3_X2, LINE3_Y);
-        Line line4 = new Line(LINE4_X, LINE4_Y1, LINE4_X, LINE4_Y2);
+        Line line3 = new Line(LINE3_X1, LINE1_Y, LINE3_X2, LINE1_Y);
+        Line line4 = new Line(LINE4_X, LINE2_Y1, LINE4_X, LINE2_Y2);
         
         Circle sun = new Circle(SUN_X, SUN_Y, SUN_RADIUS);
         sun.setFill(Color.YELLOW);
