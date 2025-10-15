@@ -8,6 +8,7 @@ import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Polygon;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 
@@ -30,9 +31,11 @@ public class HouseWithWindowPanesLab extends Application {
         final double GRASS_HEIGHT = 50;
         
         final double WALLS_X = 125;
-        final double WALLS_WIDTH = 250, WALLS_HEIGHT = 250;
+        final double WALLS_WIDTH = 250, WALLS_HEIGHT = 200;
         
         final double DOORSTEP_HEIGHT = 10;
+        
+        final double ROOF_HEIGHT = 120;
         
         Rectangle grass = new Rectangle(0, SCENE_HEIGHT - GRASS_HEIGHT, SCENE_WIDTH, GRASS_HEIGHT);
         grass.setFill(Color.GREEN);
@@ -44,9 +47,16 @@ public class HouseWithWindowPanesLab extends Application {
         Rectangle doorstep = new Rectangle(WALLS_X, SCENE_HEIGHT - GRASS_HEIGHT, WALLS_WIDTH, DOORSTEP_HEIGHT);
         doorstep.setFill(Color.BEIGE);
         
+        Polygon roof = new Polygon(
+                WALLS_X, SCENE_HEIGHT - GRASS_HEIGHT - WALLS_HEIGHT,
+                WALLS_X + WALLS_WIDTH, SCENE_HEIGHT - GRASS_HEIGHT - WALLS_HEIGHT,
+                WALLS_X + WALLS_WIDTH / 2, SCENE_HEIGHT - GRASS_HEIGHT - WALLS_HEIGHT - ROOF_HEIGHT
+        );
+        roof.setFill(Color.RED);
+        
         Pane root = new Pane();
         root.getChildren().addAll(
-                grass, walls, doorstep
+                grass, walls, doorstep, roof
         );
         
         Scene scene = new Scene(root, SCENE_WIDTH, SCENE_HEIGHT);
